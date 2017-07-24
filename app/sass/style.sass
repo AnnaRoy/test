@@ -1,0 +1,489 @@
+$primary-color: #ffffff
+$color-two: #485460
+$color-accent: #49cbcd
+$color-text: #484c55
+$color-gray: #f8f9fb
+$color-red:  #f46d6d
+$font: OpenSans, sans-serif
+$font-two: OpenSans SemiBold, sans-serif
+$arrow-url: url('../img/sprites.png')
+@mixin transition($time)
+  transition:         all $time ease
+@mixin transition-property ($position)
+  transition-property: $position, transform
+@mixin transform ($deg)
+  transform: rotate($deg)
+@mixin transition-delay ($time1, $time2)
+  transition-delay: $time1, $time2
+@mixin transition-duration ($time1, $time2)
+  transition-duration: $time1, $time2
+
+.wrapper
+  background: $primary-color
+  color: $color-text
+  font: 14px  $font
+
+.header-wrap
+  background: $primary-color
+  @include transition (0.3s)
+  padding: 29px 0
+.header
+  max-width: 1170px
+  margin: 0 auto
+.logo, .menu
+  display: block
+.logo
+  float: left
+  img
+    display: block
+.menu
+  float: right
+  font-size: 0
+  margin: 10px -10px
+.nav-link
+  padding: 40px 25px
+  font-size: 15px
+  position: relative
+  &:hover
+    background: $color-gray
+    color: $color-accent
+    @include transition (.3s)
+    &:before
+      content: ''
+      position: absolute
+      width: 100%
+      height: 3px
+      background: $color-accent
+      bottom: 0
+      left: 0
+.stickytop
+  position: fixed
+  @include transition (.7s)
+  width: 100%
+  z-index: 999
+  top: 0
+
+.navbar-btn
+  float: right
+  position: relative
+  display: none
+  width: 30px
+  height: 25px
+  top: 0
+  right: 0
+  cursor: pointer
+.navbar-btn-icon,
+.navbar-btn-icon:before,
+.navbar-btn-icon:after
+  content: ""
+  position: absolute
+  top: 10px
+  left: 0
+  width: 30px
+  height: 3px
+  background: $color-accent
+  z-index: 9999999999
+  @include transition-delay (0.3s, 0s)
+  @include transition-duration (0.3s, 0.3s)
+.navbar-btn-icon
+  display: block
+.navbar-btn-icon:after
+  top: 10px
+  @include transition-property (bottom)
+  z-index: 9999999999
+.navbar-btn-icon:before
+  top: -10px
+  @include transition-property (top)
+.is-active .navbar-btn-icon
+  background: none
+  top: 0
+.is-active .navbar-btn-icon:before
+  top: 10px
+  @include transform (45deg)
+  @include transition-delay (0s, 0.3s)
+.is-active .navbar-btn-icon:after
+  bottom: 0
+  @include transform (-45deg)
+  @include transition-delay (0s, 0.3s)
+.navbar-btn.is-active
+  @include transition(0.3s)
+.slider
+  img
+    width: 100%
+    display: block
+.slider-img
+  position: relative
+.slick-arrow
+  width: 50px
+  height: 50px
+  border-radius: 50%
+  &:before
+    content: " "
+.slick-prev
+  left: 53px
+  background: $primary-color $arrow-url no-repeat -1px 3px
+  z-index: 1
+  &:hover
+    background: $primary-color $arrow-url no-repeat -1px 3px
+    opacity: 0.6
+  &:focus
+    background: $primary-color $arrow-url no-repeat -1px 3px
+
+.slick-next
+  right: 53px
+  background: $primary-color $arrow-url no-repeat -43px 3px
+  &:hover
+    background: $primary-color $arrow-url no-repeat -43px 3px
+    opacity: 0.6
+  &:focus
+    background: $primary-color $arrow-url no-repeat -43px 3px
+.slider-content
+  position: absolute
+  top: 20%
+  left: 50%
+  width: 58%
+  z-index: 99
+  margin-left: -29%
+  color: $primary-color
+  text-align: center
+  h2
+    font: 63px $font-two
+    margin: 40px 0
+  p
+    font: 23px $font
+    margin: 10px 0
+.slider-button
+  display: block
+  margin: 55px auto
+  width: 230px
+  font: 26px $font-two
+  border: 3px solid $primary-color
+  border-radius: 5px
+  padding: 10px 0
+.container
+  max-width: 1170px
+  margin: 0 auto
+.wrap-content
+  padding: 80px 0 55px
+.caption
+  margin: 15px 0 100px
+.heading
+  font: 42px $font
+  text-align: center
+.items
+  margin: 20px -1% 30px
+  font-size: 0
+.item
+  width: 23%
+  display: inline-block
+  text-align: center
+  font-size: 14px
+  margin: 0 1%
+  h3
+    font: 22px $font
+    margin: 10px 0
+  .par
+    line-height: 2
+    margin: 15px 0
+.img-circle
+  display: inline-block
+  border-radius: 50%
+  height: 200px
+  width: 200px
+  background: #eeeef0
+  vertical-align: top
+  position: relative
+  margin:
+    top: 30px
+    bottom: 50px
+    left: auto
+  a
+    position: absolute
+    top: 50%
+    left: 50%
+    margin: -34px 0 0 -20px
+    color: $color-red
+    font-size: 50px
+    opacity: 0
+  &:hover a
+    @include transition(.3s)
+    opacity: 1
+
+.plans
+  background: $primary-color - 14
+  .items
+    margin: 0 -1%
+  .item
+    width: 31%
+    margin: 38px 1%
+.plans-wrap
+  border: 1px solid #ecf0f1
+  background: $color-gray
+  max-width: 370px
+
+  .price
+    font-size: 20px
+    padding: 20px 0
+    background: $color-gray
+  span
+    display: block
+    background: $primary-color
+    padding: 13px 0
+    position: relative
+    &:before
+      content: " "
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 1px
+      background: #ecf0f1
+  .span-btn
+    background: $color-gray
+.plan-button
+  display: block
+  background: #788492
+  color: $primary-color
+  font: 17px $font-two
+  width: 170px
+  border-radius: 3px
+  margin: 20px auto
+  padding: 10px 0
+.plan
+  background: $color-two
+  font-size: 26px
+  padding: 20px 0
+  color: $primary-color
+.color-active
+  background: $color-accent
+  @include transition(.4s)
+.contact
+  background-image: url("../img/footer-img.jpg")
+  background-size: cover
+  display: block
+  font-size: 0
+  color: $primary-color
+.contacts
+  font-size: 0
+  margin: 0 -15px
+.footer-item
+  width: 47%
+  display: inline-block
+  vertical-align: top
+  color: #FFFFFF
+  font-size: 0
+  margin: 0 15px
+  overflow: hidden
+  h3
+    font-size: 24px
+  p
+    color: #ecf0f1
+    margin: 5px 0
+    font-size: 14px
+  .social-wrap
+    margin: 35px -4px 20px
+    font-size: 0
+  .social
+    width: 43px
+    height: 43px
+    border-radius: 50%
+    display: inline-block
+    font-size: 25px
+    text-align: center
+    padding: 5px
+    margin: 0 4px
+  .face
+    background: #3b5997
+  .tw
+    background: #3ec2f3
+  .google
+    background: #e44c41
+  span
+    font-size: 14px
+    display: block
+    color: #bface2
+    margin: 4px 0
+.input
+  &:first-child
+    margin-right: 24px
+.input
+  display: inline-block
+  width: 270px
+.input , .textarea, .submit
+  margin:
+    bottom: 30px
+  border-radius: 4px
+  font: 16px $font
+  padding: 10px
+.textarea
+  height: 180px
+  width: 570px
+  resize: none
+.submit
+  width: 170px
+  color: $primary-color
+  background: $color-accent
+  font: 22px $font
+  border: transparent
+  cursor: pointer
+  float: right
+@media screen and (max-width: 1207px)
+  .logo
+    margin:
+      left: 10px
+  .slider-content
+    h2
+      font-size: 50px
+      margin: 20px 0
+    p
+      font-size: 19px
+    .slider-button
+      margin: 30px auto
+  .contacts
+    margin: 0
+  .input, .textarea
+    width: 100%
+  .form
+    max-width: 570px
+@media screen and (max-width: 1024px)
+  .header-wrap
+    padding: 15px 0
+  .stickytop
+    padding: 8px 0
+  .heading
+    font-size: 36px
+  .menu
+    margin: 0 50px
+    padding: 0
+  .navbar
+    position: fixed
+    top: 0
+    right: -230px
+    height: 100%
+    background: $primary-color + 14
+    width: 230px
+    padding: 70px 0
+    z-index: 9999999999
+    @include transition(.7s)
+  .navbar-right.active
+    right: 0
+  .nav-link
+    display: block
+    padding: 15px 25px
+  .navbar-btn
+    display: block
+    margin: 10px
+  .wrap-content
+    padding: 40px 0 30px
+  .caption
+    margin: 15px 0 40px
+  .footer-item
+    width: 100%
+    margin: 25px 0
+    display: block
+    text-align: center
+  .form
+    margin: 0 auto
+@media screen and (max-width: 923px)
+  .slider-content
+    top: 6%
+    h2
+      font-size: 36px
+    p
+      font-size: 17px
+    .slider-button
+      font-size: 20px
+      width: 200px
+  .heading
+    font-size: 32px
+  .wrap-content
+    padding: 25px 0
+  .caption
+    margin: 0
+  .items
+    margin: 0 auto
+  .plans
+    .items
+      margin: 0 auto
+  .item
+    width: 48%
+@media screen and (max-width: 665px)
+  .menu
+    margin: 0 20px
+  .slider-content
+    h2
+      margin: 0
+    p
+      display: none
+  .plans
+    .item
+      width: 60%
+      display: block
+      margin: 15px auto
+@media screen and (max-width: 568px)
+  .form
+    margin: 0 10px
+  .slider-content
+    top: 26%
+    h2
+      font-size: 23px
+  .slider-button
+    display: none
+  .slick-next
+    right: 10px
+  .slick-prev
+    left: 10px
+  .heading
+    font-size: 30px
+  .item
+    width: 100%
+    .par
+      width: 300px
+      margin: 0 auto
+  .plans
+    .item
+      width: 300px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
